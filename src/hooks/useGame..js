@@ -12,7 +12,7 @@ const useGames = () => {
         setIsloading(true);
         const response = await apiClient("/games");
         const { data } = response;
-        setData(data);
+        setData(data.results);
         setIsloading(false);
       } catch (error) {
         setError(error.message);
