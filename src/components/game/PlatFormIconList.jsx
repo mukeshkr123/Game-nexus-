@@ -24,7 +24,6 @@ const PlatFormIconList = ({ platform }) => {
     ios: MdPhoneIphone,
     web: BsGlobe,
   };
-  console.log(platform);
   return (
     <>
       <HStack marginY={1}>
