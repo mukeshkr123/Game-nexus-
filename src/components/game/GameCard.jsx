@@ -1,6 +1,7 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
 import { PropTypes } from "prop-types";
 import PlatFormIconList from "./PlatFormIconList";
+import CriticScore from "./CriticScore";
 
 const GameCard = ({ game }) => {
   return (
@@ -19,6 +20,7 @@ const GameCard = ({ game }) => {
             <PlatFormIconList
               platform={game.parent_platforms.map((p) => p.platform)}
             />
+            <CriticScore score={game.metacritic} />
           </HStack>
         </CardBody>
       </Card>
@@ -30,6 +32,7 @@ GameCard.propTypes = {
   game: PropTypes.shape({
     background_image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    metacritic: PropTypes.number.isRequired,
     parent_platforms: PropTypes.arrayOf(
       PropTypes.shape({
         platform: PropTypes.string.isRequired,
