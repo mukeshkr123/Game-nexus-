@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../../services/api-client";
 
-const useGames = () => {
+const useGames = (selectedGenre) => {
   const [data, setData] = useState([]);
   const [isloading, setIsloading] = useState(false);
   const [error, setError] = useState(false);
@@ -10,7 +10,11 @@ const useGames = () => {
     const FetchData = async () => {
       try {
         setIsloading(true);
-        const response = await apiClient("/games");
+        const response = await apiClient("/games", {
+          params: {
+            genre: selectedGenre?.id,
+          },
+        });
         const { data } = response;
         setData(data.results);
         setIsloading(false);
@@ -21,7 +25,7 @@ const useGames = () => {
     };
 
     FetchData();
-  }, []);
+  }, [selectedGenre.id]);
 
   return { data, isloading, error };
 };

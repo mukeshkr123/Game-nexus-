@@ -7,8 +7,9 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import useGenre from "../../hooks/useGenre";
+import PropTypes from "prop-types";
 
-const GenreList = () => {
+const GenreList = ({ onSelectGenre }) => {
   const { data, isloading, error } = useGenre();
 
   if (error) return null;
@@ -24,7 +25,11 @@ const GenreList = () => {
               boxSize="32px"
               borderRadius={8}
             />
-            <Button variant="link" fontSize="lg">
+            <Button
+              onClick={() => onSelectGenre(genre)}
+              variant="link"
+              fontSize="lg"
+            >
               {genre.name}
             </Button>
           </HStack>
@@ -32,6 +37,10 @@ const GenreList = () => {
       ))}
     </List>
   );
+};
+
+GenreList.propTypes = {
+  onSelectGenre: PropTypes.func.isRequired,
 };
 
 export default GenreList;
