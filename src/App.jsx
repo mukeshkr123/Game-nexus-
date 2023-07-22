@@ -8,6 +8,7 @@ import SortSelector from "./components/game/SortSelector";
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState({});
+  console.log(gameQuery);
 
   return (
     <>
@@ -22,7 +23,11 @@ const App = () => {
         }}
       >
         <GridItem area="nav">
-          <Navbar />
+          <Navbar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" padding="5px">
