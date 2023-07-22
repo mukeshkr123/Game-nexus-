@@ -5,8 +5,8 @@ import GameCardContainer from "./GameCardContainer";
 import GameSkeleton from "./GameSkeleton";
 import PropTypes from "prop-types";
 
-const GameGrid = ({ selectedGenre, selectedPlatform }) => {
-  const { data, isloading, error } = useGames(selectedGenre, selectedPlatform);
+const GameGrid = ({ gameQuery }) => {
+  const { data, isloading, error } = useGames(gameQuery);
   const games = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -35,8 +35,7 @@ const GameGrid = ({ selectedGenre, selectedPlatform }) => {
 };
 
 GameGrid.propTypes = {
-  selectedGenre: PropTypes.string.isRequired,
-  selectedPlatform: PropTypes.string.isRequired,
+  gameQuery: PropTypes.arrayOf.isRequired,
 };
 
 export default GameGrid;
