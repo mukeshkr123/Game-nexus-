@@ -1,30 +1,30 @@
 import { Card, CardBody, HStack, Heading, Image } from "@chakra-ui/react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import PlatFormIconList from "./PlatFormIconList";
 import CriticScore from "./CriticScore";
 
-const GameCard = ({ game }) => {
+const GameCard = ({
+  game: { background_image, name, metacritic, parent_platforms },
+}) => {
   return (
-    <>
-      <Card>
-        <Image
-          src={game.background_image}
-          objectFit="cover"
-          height={200}
-          width="100%"
-          alt={game.name}
-        />
-        <CardBody>
-          <Heading fontSize="2xl"> {game.name}</Heading>
-          <HStack justifyContent="space-between">
-            <PlatFormIconList
-              platform={game.parent_platforms.map((p) => p.platform)}
-            />
-            <CriticScore score={game.metacritic} />
-          </HStack>
-        </CardBody>
-      </Card>
-    </>
+    <Card>
+      <Image
+        src={background_image}
+        objectFit="cover"
+        height={200}
+        width="100%"
+        alt={name}
+      />
+      <CardBody>
+        <Heading fontSize="2xl">{name}</Heading>
+        <HStack justifyContent="space-between">
+          <PlatFormIconList
+            platform={parent_platforms.map((p) => p.platform)}
+          />
+          <CriticScore score={metacritic} />
+        </HStack>
+      </CardBody>
+    </Card>
   );
 };
 

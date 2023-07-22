@@ -1,29 +1,5 @@
-import { useEffect, useState } from "react";
-import apiClient from "../../services/api-client";
+import useData from "./useData";
 
-const usePlatformIcons = () => {
-  const [data, setData] = useState([]);
-  const [isloading, setIsloading] = useState(false);
-  const [error, setError] = useState(false);
+const usePlatforms = () => useData("/platforms/lists/parents");
 
-  useEffect(() => {
-    const FetchData = async () => {
-      try {
-        setIsloading(true);
-        const response = await apiClient("/platforms/lists/parents");
-        const { data } = response;
-        setData(data.results);
-        setIsloading(false);
-      } catch (error) {
-        setError(error.message);
-        setIsloading(false);
-      }
-    };
-
-    FetchData();
-  }, []);
-
-  return { data, isloading, error };
-};
-
-export default usePlatformIcons;
+export default usePlatforms;
