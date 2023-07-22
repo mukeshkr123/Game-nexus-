@@ -36,7 +36,10 @@ const App = () => {
             selectedPlatform={selectedPlatform}
             onSelectPlatform={(platform) => setSelectedPlatform(platform)}
           />
-          <GameGrid selectedGenre={selectedGenre} />
+          <GameGrid
+            selectedPlatform={selectedPlatform}
+            selectedGenre={selectedGenre}
+          />
         </GridItem>
       </Grid>
     </>
