@@ -9,7 +9,7 @@ const GameCard = ({
   return (
     <Card>
       <Image
-        src={background_image}
+        src={background_image || "No Image"}
         objectFit="cover"
         height={200}
         width="100%"
