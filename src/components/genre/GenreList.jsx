@@ -12,10 +12,9 @@ import PropTypes from "prop-types";
 
 const GenreList = ({ onSelectGenre }) => {
   const { data, isloading, error } = useGenre();
-
   if (error) return null;
   if (isloading) return <Spinner />;
-
+  console.log(data);
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>
