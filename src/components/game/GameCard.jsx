@@ -16,13 +16,13 @@ const GameCard = ({
         alt={name}
       />
       <CardBody>
-        <Heading fontSize="2xl">{name}</Heading>
-        <HStack justifyContent="space-between">
+        <HStack marginBottom={3} justifyContent="space-between">
           <PlatFormIconList
             platform={parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={metacritic} />
         </HStack>
+        <Heading fontSize="2xl">{name}</Heading>
       </CardBody>
     </Card>
   );
