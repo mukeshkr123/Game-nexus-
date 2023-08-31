@@ -9,7 +9,6 @@ import GameHeading from "./components/game/GameHeading";
 
 const App = () => {
   const [gameQuery, setGameQuery] = useState({});
-  console.log(gameQuery);
 
   return (
     <>
@@ -41,7 +40,7 @@ const App = () => {
         <GridItem area="main">
           <GameHeading gameQuery={gameQuery} />
           <Box paddingLeft={2}>
-            <HStack spacing={5}  marginBottom={5}>
+            <HStack spacing={5} marginBottom={5}>
               <PlatFormSelector
                 selectedPlatform={gameQuery.platform}
                 onSelectPlatform={(platform) =>
