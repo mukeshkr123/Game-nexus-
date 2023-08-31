@@ -17,11 +17,10 @@ const GenreList = ({ onSelectGenre }) => {
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>
-        {" "}
         Genres
       </Heading>
       <List>
-        {data.map((genre) => (
+        {data?.results?.map((genre) => (
           <ListItem padding="5px" key={genre.id}>
             <HStack>
               <Image
