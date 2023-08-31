@@ -1,23 +1,21 @@
-// src/hooks/useData.js
-// Let's assume useData.js is in the correct location with the appropriate implementation.
+import { useQuery } from "react-query";
+import apiClient from "../../services/api-client";
 
-// src/hooks/useGames.js
-import useData from "./useData";
-
-const useGames = (gameQuery) => {
-  const params = {
-    genres: gameQuery?.genre?.id,
-    platforms: gameQuery?.platform?.id,
-    ordering: gameQuery.sortOrder,
-    search: gameQuery.searchText,
-  };
-
-  const gameData = useData("/games", params, [gameQuery]);
-
-  // You can also add additional logic or side-effects here if needed
-  // using the gameData fetched from the useData hook.
-
-  return gameData;
-};
+const useGames = (gameQuery) =>
+  useQuery({
+    queryKey: ["games", gameQuery],
+    queryFn: () =>
+      apiClient
+        .get("/games", {
+          params: {
+            genres: gameQuery?.genre?.id,
+            parent_platforms: gameQuery?.platform?.id,
+            ordering: gameQuery.sortOrder,
+            search: gameQuery.searchText,
+          },
+        })
+        .then((res) => res.data),
+    staleTime: 24 * 60 * 60 * 1000,
+  });
 
 export default useGames;

@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import useData from "./useData";
+import genres from "../data/genres";
 import apiClient from "../../services/api-client";
 
 const useGenres = () =>
