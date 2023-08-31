@@ -1,10 +1,10 @@
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import apiClient from "../../services/api-client";
 
 const useGames = (gameQuery) =>
-  useQuery({
+  useInfiniteQuery({
     queryKey: ["games", gameQuery],
-    queryFn: () =>
+    queryFn: ({ pageParam = 1 }) =>
       apiClient
         .get("/games", {
           params: {
@@ -12,10 +12,14 @@ const useGames = (gameQuery) =>
             parent_platforms: gameQuery?.platform?.id,
             ordering: gameQuery.sortOrder,
             search: gameQuery.searchText,
+            page: pageParam,
           },
         })
         .then((res) => res.data),
     staleTime: 24 * 60 * 60 * 1000,
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.next ? allPages.length + 1 : undefined;
+    },
   });
 
 export default useGames;
