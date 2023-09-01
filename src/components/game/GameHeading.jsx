@@ -1,12 +1,13 @@
 import { Heading } from "@chakra-ui/react";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 const GameHeading = ({ gameQuery }) => {
-  const heading = `${gameQuery?.platform?.name || " "} ${
-    gameQuery?.genre?.name || " "
+  const heading = `${gameQuery?.platform?.name || ""} ${
+    gameQuery?.genre?.name || ""
   } Games`;
+
   return (
-    <Heading marginY={5} fontSize="5xl" as="h1">
+    <Heading marginY={5} fontSize="5xl" as="h1" marginX={3}>
       {heading}
     </Heading>
   );

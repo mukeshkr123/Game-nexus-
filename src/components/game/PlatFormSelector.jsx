@@ -12,7 +12,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
     <>
       <Menu>
         <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-          {selectedPlatform?.name || "Platforms"}
+          {selectedPlatform ? selectedPlatform.name : "Platforms"}
         </MenuButton>
         <MenuList>
           {data?.results?.map((platform) => (
@@ -31,6 +31,9 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
 
 PlatformSelector.propTypes = {
   onSelectPlatform: PropTypes.func.isRequired,
-  selectedPlatform: PropTypes.string,
+  selectedPlatform: PropTypes.shape({
+    name: PropTypes.string,
+  }),
 };
+
 export default PlatformSelector;

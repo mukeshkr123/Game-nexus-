@@ -9,11 +9,11 @@ const GameCard = ({
   return (
     <Card>
       <Image
-        src={background_image || "No Image"}
+        src={background_image || ""}
         objectFit="cover"
         height={200}
         width="100%"
-        alt={name}
+        alt={`Cover image for ${name}`}
       />
       <CardBody>
         <HStack marginBottom={3} justifyContent="space-between">

@@ -8,7 +8,6 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GameGrid = ({ gameQuery }) => {
-  console.log(gameQuery);
   const {
     data,
     error,
@@ -62,7 +61,7 @@ const GameGrid = ({ gameQuery }) => {
 };
 
 GameGrid.propTypes = {
-  gameQuery: PropTypes.objectOf.isRequired,
+  gameQuery: PropTypes.shape({}).isRequired,
 };
 
 export default GameGrid;

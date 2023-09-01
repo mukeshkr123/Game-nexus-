@@ -12,7 +12,9 @@ import PropTypes from "prop-types";
 
 const GenreList = ({ onSelectGenre }) => {
   const { data, isloading, error } = useGenre();
-  if (error) return null;
+  if (error) {
+    return <div>Error loading genres: {error.message}</div>;
+  }
   if (isloading) return <Spinner />;
   return (
     <>
