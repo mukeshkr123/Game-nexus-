@@ -8,15 +8,17 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const GameGrid = ({ gameQuery }) => {
+  console.log(gameQuery);
   const {
     data,
-    isloading,
     error,
+    isLoading,
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
-  const games = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  const games = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   if (error) return <Text>{error && <Text> {error.message}</Text>}</Text>;
 
@@ -32,7 +34,7 @@ const GameGrid = ({ gameQuery }) => {
         loader={<Spinner />}
       >
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-          {isloading &&
+          {isLoading &&
             games.map((g) => (
               <GameCardContainer key={g}>
                 <GameSkeleton />
@@ -60,7 +62,7 @@ const GameGrid = ({ gameQuery }) => {
 };
 
 GameGrid.propTypes = {
-  gameQuery: PropTypes.arrayOf.isRequired,
+  gameQuery: PropTypes.objectOf.isRequired,
 };
 
 export default GameGrid;

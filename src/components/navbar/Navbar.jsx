@@ -8,7 +8,7 @@ const Navbar = ({ onSearch }) => {
       <HStack padding="10px">
         <Image
           src="https://cdn.iconscout.com/icon/free/png-512/free-webpack-2749382-2284772.png?f=avif&w=512"
-          boxSize="60px"
+          boxSize="55px"
         />
         <SearchInput onSearch={onSearch} />
         <ColorModeSwitch />

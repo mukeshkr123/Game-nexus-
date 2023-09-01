@@ -31,6 +31,6 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
 
 PlatformSelector.propTypes = {
   onSelectPlatform: PropTypes.func.isRequired,
-  selectedPlatform: PropTypes.string.isRequired,
+  selectedPlatform: PropTypes.string,
 };
 export default PlatformSelector;
